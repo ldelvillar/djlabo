@@ -21,8 +21,8 @@ export const SITE_CONFIG = {
       'DjLabo | DJ Profesional para Eventos, Clubes y Fiestas Privadas',
     defaultDescription:
       'Reserva a DjLabo para tu próximo evento. Especialista en crear experiencias musicales inolvidables con los mejores sets de música electrónica y comercial. ¡Lleva tu fiesta al siguiente nivel!',
-    defaultImage: '/images/brand/logo.png',
-    defaultImageAlt: 'Logo de DjLabo',
+    defaultImage: '/images/portada.jpeg',
+    defaultImageAlt: 'Foto de Dj Labo',
   },
 } as const;
 

@@ -18,7 +18,7 @@ export default function CookieBanner() {
     // Load GA script
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZZJC1BHPKM';
+    //script.src = 'https://www.googletagmanager.com/gtag/js?id=';
     document.head.appendChild(script);
 
     // Inicializar GA
@@ -70,7 +70,7 @@ export default function CookieBanner() {
               </a>
             </p>
           </div>
-          <div class="flex flex-shrink-0 gap-3">
+          <div class="flex shrink-0 gap-3">
             <button
               onClick={handleReject}
               class="rounded-lg border-2 border-gray-300 px-6 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"

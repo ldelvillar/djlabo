@@ -1,16 +1,20 @@
 ---
+import VideoPlayer from '@/assets/video_player.svg';
+
 interface Mix {
   title: string;
   duration: string;
   plays: string;
+  href: string;
   waveform: number[];
 }
 
 const mixes: Mix[] = [
   {
     title: 'Techno MIX1',
-    duration: '65 min',
-    plays: '12.5K plays',
+    duration: '26:17',
+    plays: '12.5K reproducciones',
+    href: 'https://soundcloud.com/user-186505129/labo-techno-mix-1',
     waveform: [
       50, 10, 60, 34, 61, 29, 62, 56, 57, 45, 18, 59, 7, 43, 17, 33, 19, 53, 29,
       34, 39, 13, 12, 51, 43, 5, 34, 49, 28, 17, 14, 29, 47, 9, 56, 42, 7, 8, 9,
@@ -18,9 +22,10 @@ const mixes: Mix[] = [
     ],
   },
   {
-    title: 'Deep House Sessions Vol. 4',
-    duration: '82 min',
-    plays: '8.3K plays',
+    title: '152 Industrial',
+    duration: '6:03',
+    plays: '8.3K reproducciones',
+    href: 'https://soundcloud.com/user-186505129/152-industrial-mp3',
     waveform: [
       5, 10, 26, 23, 36, 61, 35, 45, 4, 48, 22, 8, 17, 11, 20, 25, 42, 31, 63,
       50, 60, 45, 29, 45, 46, 8, 20, 32, 46, 0.3, 23, 25, 6, 30, 40, 57, 14, 45,
@@ -29,8 +34,9 @@ const mixes: Mix[] = [
   },
   {
     title: 'Techno Nights Live Set',
-    duration: '120 min',
-    plays: '15.2K plays',
+    duration: '120:00',
+    plays: '15.2K reproducciones',
+    href: 'https://soundcloud.com/user-186505129/techno-nights-live-set',
     waveform: [
       7, 35, 56, 43, 23, 58, 8, 63, 34, 12, 39, 46, 60, 53, 51, 51, 35, 12, 13,
       19, 45, 53, 58, 51, 42, 48, 9, 58, 21, 14, 33, 20, 8, 38, 3, 46, 37, 21,
@@ -39,8 +45,9 @@ const mixes: Mix[] = [
   },
   {
     title: 'Sunset Beach Party',
-    duration: '90 min',
-    plays: '10.8K plays',
+    duration: '90:00',
+    plays: '10.8K reproducciones',
+    href: 'https://soundcloud.com/user-186505129/sunset-beach-party',
     waveform: [
       45, 48, 45, 55, 46, 35, 42, 57, 3, 35, 2, 39, 25, 16, 16, 5, 23, 61, 34,
       1, 11, 35, 27, 43, 28, 9, 19, 32, 45, 31, 49, 40, 53, 36, 50, 61, 61, 11,
@@ -72,26 +79,12 @@ const mixes: Mix[] = [
               </div>
 
               <a
-                href="https://soundcloud.com/user-186505129/labo-techno-mix-1"
+                href={mix.href}
                 target="_blank"
                 class="group flex h-11 w-11 items-center justify-center rounded-full bg-primary transition-colors hover:bg-primary/90"
                 aria-label="Play mix"
               >
-                <svg
-                  width="14"
-                  height="16"
-                  viewBox="0 0 14 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="ml-1 fill-white transition-transform group-hover:scale-110"
-                >
-                  <path
-                    d="M1 1.5L13 8L1 14.5V1.5Z"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <VideoPlayer class="ml-1 fill-white transition-transform group-hover:scale-110" />
               </a>
             </div>
 
