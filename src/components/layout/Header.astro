@@ -1,0 +1,51 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const navLinks: NavLink[] = [
+  { href: '#sobre-mi', label: 'Sobre mí' },
+  { href: '/musica', label: 'Música' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/eventos', label: 'Eventos' },
+];
+---
+
+<header
+  class="fixed top-0 right-0 left-0 z-50 border-b border-gray-800 backdrop-blur-md"
+>
+  <div class="container mx-auto flex h-20 items-center justify-between px-4">
+    <div class="flex items-center">
+      <a href="/" class="text-2xl font-bold tracking-wider text-white">
+        DJ LABØ
+      </a>
+    </div>
+
+    <nav class="hidden md:block">
+      <ul class="flex items-center gap-8">
+        {
+          navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class="text-base text-gray-300 transition-colors hover:text-white"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center">
+      <a
+        href="/contacto"
+        class="rounded-full bg-primary px-6 py-2 text-base font-medium text-white transition-opacity hover:opacity-90"
+      >
+        Contacto
+      </a>
+    </div>
+  </div>
+</header>

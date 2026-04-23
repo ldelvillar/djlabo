@@ -1,0 +1,55 @@
+---
+import Music from '@/assets/music.svg';
+import Users from '@/assets/users.svg';
+import Microphone from '@/assets/microphone.svg';
+
+interface Service {
+  title: string;
+  description: string;
+  icon: typeof Music;
+}
+
+const services: Service[] = [
+  {
+    title: 'Sets en Club',
+    description:
+      'Actuaciones de alta energía para discotecas y locales íntimos. Sets personalizados para adaptarse al ambiente y público de tu local.',
+    icon: Music,
+  },
+  {
+    title: 'Eventos Privados',
+    description:
+      'Bodas, eventos corporativos y fiestas privadas. Servicio profesional con listas de reproducción personalizables para cualquier ocasión.',
+    icon: Users,
+  },
+  {
+    title: 'Producción',
+    description:
+      'Producción musical original, remixes y diseño de sonido. Colabora en pistas o encarga piezas personalizadas.',
+    icon: Microphone,
+  },
+];
+---
+
+<section id="servicios" class="overflow-hidden bg-black px-4 py-24">
+  <div class="mx-auto flex max-w-7xl flex-col items-center">
+    <h2 class="mb-4 text-center text-4xl text-white md:text-5xl">Servicios</h2>
+    <div class="mb-12 h-1 w-24 bg-primary"></div>
+
+    <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+      {
+        services.map(service => (
+          <div class="group flex flex-col items-center rounded-xl border border-[#1e2939] bg-linear-to-b from-primary/20 to-transparent p-8 text-center transition-colors hover:border-primary/50">
+            <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+              <service.icon />
+            </div>
+            <h3 class="mb-4 text-2xl font-medium text-white">
+              {service.title}
+            </h3>
+            <p class="leading-relaxed text-[#99a1af]">{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

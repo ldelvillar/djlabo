@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<section
+  class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-4 pb-20 text-center"
+>
+  <div class="absolute inset-0 z-0">
+    <Image
+      src="/portada.jpeg"
+      alt="DJ Labo"
+      width={500}
+      height={500}
+      loading="eager"
+      class="h-full w-full object-cover opacity-50"
+    />
+    <div
+      class="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-10 flex max-w-2xl flex-col items-center">
+    <h1 class="mb-4 text-6xl font-medium text-white md:text-8xl">DJ LABØ</h1>
+
+    <p class="mb-10 text-lg text-[#d1d5dc] md:text-xl">
+      DJ profesional & productor musical.
+    </p>
+
+    <a
+      href="#book"
+      class="inline-block rounded-full bg-primary px-10 py-3 text-base font-medium text-white transition-transform hover:scale-105 active:scale-95"
+    >
+      Contactar
+    </a>
+  </div>
+</section>

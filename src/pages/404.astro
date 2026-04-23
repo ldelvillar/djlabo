@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Music from '@/assets/music.svg';
+import Home from '@/assets/home.svg';
+
+const title = 'Página no Encontrada | DJ Labo';
+const description =
+  'Lo sentimos, la página que buscas no existe. Regresa a la página principal para descubrir más sobre DJ Labo.';
+---
+
+<Layout title={title} description={description}>
+  <div
+    class="flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 text-white"
+  >
+    <div class="max-w-2xl text-center">
+      <div class="relative mb-8">
+        <p
+          class="font-blimone text-[150px] leading-none opacity-20 select-none md:text-[250px]"
+        >
+          404
+        </p>
+      </div>
+
+      <h1 class="mb-6 font-blimone text-4xl tracking-tight md:text-6xl">
+        Pista No Encontrada
+      </h1>
+
+      <p class="mb-12 text-xl text-[#99a1af]">
+        Parece que esta página se perdió en la mezcla. Regresa a la página
+        principal para descubrir más sobre DJ Labo.
+      </p>
+
+      <div class="flex flex-col justify-center gap-4 md:flex-row">
+        <a
+          href="/"
+          class="flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 transition-all hover:scale-[1.02] hover:bg-primary/90 active:scale-[0.98]"
+        >
+          <Home /> Ir a la Página Principal
+        </a>
+        <button
+          onclick="history.back()"
+          class="flex items-center justify-center gap-2 rounded-full border border-transparent bg-[#1e2939] px-8 py-4 transition-all hover:scale-[1.02] hover:border-[#364153] active:scale-[0.98]"
+        >
+          <Music />
+          Volver a la Página Anterior
+        </button>
+      </div>
+
+      <div class="mt-16 flex h-16 items-end justify-center gap-1.5">
+        {
+          Array.from({ length: 24 }).map((_, i) => (
+            <div
+              class="w-2 animate-pulse rounded-t-sm bg-primary/40"
+              style={{
+                height: `${Math.floor(Math.random() * 80) + 20}%`,
+                animationDelay: `${i * 0.05}s`,
+                animationDuration: `${Math.random() * 1 + 0.5}s`,
+              }}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>

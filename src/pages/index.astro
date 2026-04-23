@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/home/Hero.astro';
+import About from '@/components/home/About.astro';
+import Mixes from '@/components/home/Mixes.astro';
+import Services from '@/components/home/Services.astro';
+import Contact from '@/components/home/Contact.astro';
+import { SITE_CONFIG } from '@/config/site';
+import { getCombinedSchema, getWebPageSchema } from '@/config/schemas';
+
+const pathname = Astro.url.pathname;
+
+const title = SITE_CONFIG.seo.defaultTitle;
+const description = SITE_CONFIG.seo.defaultDescription;
+const pageSchema = getWebPageSchema(title, description, pathname);
+const schema = getCombinedSchema(pageSchema);
+---
+
+<Layout title={title} description={description} schema={schema}>
+  <Hero />
+  <About />
+  <Mixes />
+  <Services />
+  <Contact />
+</Layout>
