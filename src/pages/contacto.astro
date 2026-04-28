@@ -1,0 +1,131 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import Phone from '@/assets/phone.svg';
+import Envelope from '@/assets/envelope.svg';
+import Location from '@/assets/location.svg';
+import Instagram from '@/assets/instagram.svg';
+import Whatsapp from '@/assets/whatsapp.svg';
+import { SITE_CONFIG } from '@/config/site';
+
+interface ContactMethod {
+  icon: typeof Phone;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+const contactMethods: ContactMethod[] = [
+  {
+    icon: Phone,
+    label: 'Teléfono',
+    value: SITE_CONFIG.about.phone,
+    href: `tel:${SITE_CONFIG.about.phone}`,
+  },
+  {
+    icon: Envelope,
+    label: 'Email',
+    value: SITE_CONFIG.about.email,
+    href: `mailto:${SITE_CONFIG.about.email}`,
+  },
+  {
+    icon: Location,
+    label: 'Ubicación',
+    value: SITE_CONFIG.about.address,
+  },
+  {
+    icon: Instagram,
+    label: 'Instagram',
+    value: '@labo_dj',
+    href: SITE_CONFIG.social.instagram,
+  },
+  {
+    icon: Whatsapp,
+    label: 'WhatsApp',
+    value: SITE_CONFIG.about.phone,
+    href: SITE_CONFIG.social.whatsapp,
+  },
+];
+
+const title = 'Contacto | DJ Labo';
+const description =
+  'Contrata a DjLabo para eventos, sesiones en vivo o colaboraciones. ¡Hablemos de música y proyectos juntos!';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contacto',
+  url: SITE_CONFIG.domain + '/contacto/',
+  mainEntity: {
+    '@type': 'Person',
+    name: SITE_CONFIG.about.name,
+    url: SITE_CONFIG.domain,
+    logo: SITE_CONFIG.seo.defaultImage,
+    description: SITE_CONFIG.seo.defaultDescription,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Madrid',
+      addressCountry: 'ES',
+    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: SITE_CONFIG.about.phone,
+        contactType: 'customer service',
+        email: SITE_CONFIG.about.email,
+        areaServed: 'ES',
+        availableLanguage: ['es', 'en'],
+      },
+    ],
+    sameAs: [
+      SITE_CONFIG.social.instagram,
+      SITE_CONFIG.social.soundcloud,
+      SITE_CONFIG.social.whatsapp,
+    ].filter(Boolean),
+  },
+};
+---
+
+<Layout title={title} description={description} schema={schema}>
+  <section
+    class="animate-fade-in mx-auto grid min-h-screen max-w-7xl gap-12 px-4 pt-32 pb-24 md:grid-cols-2 md:px-6"
+  >
+    <div>
+      <h1
+        class="mb-6 text-3xl font-extrabold text-primary drop-shadow-lg md:text-4xl"
+      >
+        Hablemos
+      </h1>
+      <p class="mb-6 max-w-lg text-gray-200">
+        Cuéntame sobre tu evento y veamos cómo puedo ayudarte a crear la
+        atmósfera musical perfecta.
+      </p>
+      <p class="mb-6 max-w-lg text-gray-200">
+        Completa el formulario o contáctame a través de los canales disponibles
+        y te contactaré en menos de 24 horas.
+      </p>
+      <div class="text-lg text-gray-200">
+        {
+          contactMethods.map(method => (
+            <p class="mb-1.5 flex items-center gap-2">
+              <method.icon class="size-6" />
+              {method.href ? (
+                <a
+                  href={method.href}
+                  target="_blank"
+                  class="transition hover:text-primary"
+                >
+                  {method.value}
+                </a>
+              ) : (
+                <span>{method.value}</span>
+              )}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+
+    <ContactForm />
+  </section>
+</Layout>

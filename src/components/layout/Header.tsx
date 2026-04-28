@@ -6,9 +6,9 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '/musica', label: 'Música' },
-  { href: '/servicios', label: 'Servicios' },
+  { href: '/#sobre-mi', label: 'Sobre mí' },
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/galeria', label: 'Galería' },
   { href: '/eventos', label: 'Eventos' },
 ];
 

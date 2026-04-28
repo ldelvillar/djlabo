@@ -1,7 +1,30 @@
 ---
+import ContactForm from '@/components/ContactForm.astro';
 import Instagram from '@/assets/instagram.svg';
 import Soundcloud from '@/assets/soundcloud.svg';
+import Whatsapp from '@/assets/whatsapp.svg';
 import { SITE_CONFIG } from '@/config/site';
+
+const socials = [
+  {
+    icon: Instagram,
+    label: 'Instagram',
+    value: '@labo_dj',
+    href: SITE_CONFIG.social.instagram,
+  },
+  {
+    icon: Soundcloud,
+    label: 'SoundCloud',
+    value: '@djlabo',
+    href: SITE_CONFIG.social.soundcloud,
+  },
+  {
+    icon: Whatsapp,
+    label: 'WhatsApp',
+    value: SITE_CONFIG.about.phone,
+    href: SITE_CONFIG.social.whatsapp,
+  },
+];
 ---
 
 <section
@@ -18,114 +41,20 @@ import { SITE_CONFIG } from '@/config/site';
     </div>
 
     <div class="mb-16 flex gap-6">
-      <a
-        href={SITE_CONFIG.social.instagram}
-        class="group flex size-14 items-center justify-center rounded-full bg-[#1e2939] text-white transition-colors duration-300 hover:bg-primary"
-        aria-label="Instagram"
-      >
-        <Instagram />
-      </a>
-      <a
-        href={SITE_CONFIG.social.soundcloud}
-        class="group flex size-14 items-center justify-center rounded-full bg-[#1e2939] text-white transition-colors duration-300 hover:bg-primary"
-        aria-label="SoundCloud"
-      >
-        <Soundcloud />
-      </a>
-      <a
-        href={SITE_CONFIG.social.twitter}
-        class="group flex size-14 items-center justify-center rounded-full bg-[#1e2939] text-white transition-colors duration-300 hover:bg-primary"
-        aria-label="Twitter"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><path
-            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
-          ></path></svg
-        >
-      </a>
+      {
+        socials.map(social => (
+          <a
+            href={social.href}
+            target="_blank"
+            class="group flex size-14 items-center justify-center rounded-full bg-[#1e2939] text-white transition-colors duration-300 hover:bg-primary"
+            aria-label={social.label}
+          >
+            <social.icon />
+          </a>
+        ))
+      }
     </div>
 
-    <form
-      class="w-full rounded-xl border border-[#1e2939] bg-black/50 p-8 shadow-2xl backdrop-blur-sm"
-    >
-      <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div class="flex flex-col gap-2">
-          <label for="name" class="text-sm font-medium text-[#d1d5dc]"
-            >Nombre</label
-          >
-          <input
-            type="text"
-            id="name"
-            placeholder="Tu nombre"
-            class="rounded-xl border border-[#364153] bg-[#101828] px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none"
-          />
-        </div>
-        <div class="flex flex-col gap-2">
-          <label for="email" class="text-sm font-medium text-[#d1d5dc]"
-            >Correo electrónico</label
-          >
-          <input
-            type="email"
-            id="email"
-            placeholder="tu@email.com"
-            class="rounded-xl border border-[#364153] bg-[#101828] px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none"
-          />
-        </div>
-      </div>
-
-      <div class="mb-6 flex flex-col gap-2">
-        <label for="eventType" class="text-sm font-medium text-[#d1d5dc]"
-          >Tipo de evento</label
-        >
-        <select
-          id="eventType"
-          class="appearance-none rounded-xl border border-[#364153] bg-[#101828] px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none"
-        >
-          <option value="">Selecciona una opción</option>
-          <option value="club">Actuación en club</option>
-          <option value="private">Evento privado</option>
-          <option value="corporate">Reserva corporativa</option>
-          <option value="wedding">Boda</option>
-          <option value="production">Producción musical</option>
-          <option value="other">Otro</option>
-        </select>
-      </div>
-
-      <div class="mb-8 flex flex-col gap-2">
-        <label for="message" class="text-sm font-medium text-[#d1d5dc]"
-          >Mensaje</label
-        >
-        <textarea
-          id="message"
-          rows="5"
-          placeholder="Cuéntame sobre tu evento..."
-          class="resize-none rounded-xl border border-[#364153] bg-[#101828] px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        class="w-full transform rounded-full bg-primary py-4 text-lg font-medium text-white transition-all hover:bg-primary/90 active:scale-[0.98]"
-      >
-        Enviar mensaje
-      </button>
-
-      <p class="mt-8 text-center text-[#99a1af]">
-        O escribe directamente a <a
-          href={SITE_CONFIG.about.email}
-          class="text-primary transition-all hover:underline"
-          >{SITE_CONFIG.about.email}</a
-        >
-      </p>
-    </form>
+    <ContactForm />
   </div>
 </section>

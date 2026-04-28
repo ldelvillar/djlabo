@@ -3,22 +3,21 @@ export const SITE_CONFIG = {
 
   about: {
     name: 'DjLabo',
-    email: 'contacto@djlabo.es',
+    email: 'djlabo.contacto@gmail.com',
     phone: '+34 647 94 26 96',
     address: 'Madrid, España',
   },
 
   social: {
     twitter: '@djlabo',
-    instagram: 'https://www.instagram.com/djlabo',
-    facebook: 'https://www.facebook.com/djlabo',
-    tiktok: 'https://www.tiktok.com/@djlabo',
+    instagram: 'https://www.instagram.com/labo_dj',
     soundcloud: 'https://soundcloud.com/user-186505129',
+    whatsapp: 'https://wa.me/34647942696',
   },
 
   seo: {
     defaultTitle:
-      'DjLabo | DJ Profesional para Eventos, Clubes y Fiestas Privadas',
+      'DJ Profesional para Eventos, Clubes y Fiestas Privadas | DJ Labo',
     defaultDescription:
       'Reserva a DjLabo para tu próximo evento. Especialista en crear experiencias musicales inolvidables con los mejores sets de música electrónica y comercial. ¡Lleva tu fiesta al siguiente nivel!',
     defaultImage: '/images/portada.jpeg',

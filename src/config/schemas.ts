@@ -20,13 +20,7 @@ export const getDjLaboSchema = () => ({
   genre: ['Electronic', 'House', 'Open Format'],
   email: SITE_CONFIG.about.email,
   telephone: SITE_CONFIG.about.phone,
-  sameAs: [
-    SITE_CONFIG.social.instagram,
-    SITE_CONFIG.social.facebook,
-    SITE_CONFIG.social.tiktok,
-    SITE_CONFIG.social.soundcloud,
-    //SITE_CONFIG.social.spotify,
-  ],
+  sameAs: [SITE_CONFIG.social.instagram, SITE_CONFIG.social.soundcloud],
 });
 
 export const getWebPageSchema = (
