@@ -17,7 +17,7 @@ export const SITE_CONFIG = {
 
   seo: {
     defaultTitle:
-      'DJ Profesional para Eventos, Clubes y Fiestas Privadas | DJ Labo',
+      'DJ Profesional para Eventos, Clubes y Fiestas Privadas| DJ LABØ',
     defaultDescription:
       'Reserva a DjLabo para tu próximo evento. Especialista en crear experiencias musicales inolvidables con los mejores sets de música electrónica y comercial. ¡Lleva tu fiesta al siguiente nivel!',
     defaultImage: '/images/portada.jpeg',

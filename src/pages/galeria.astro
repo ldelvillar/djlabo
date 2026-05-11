@@ -1,0 +1,186 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import Cross from '@/assets/cross.svg';
+
+interface Photo {
+  src: string;
+  height: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const img1 = '/images/galeria/1.jpg';
+const img3 = '/images/galeria/3.webp';
+const img4 = '/images/galeria/4.webp';
+const img6 = '/images/galeria/6.jpg';
+const img7 = '/images/galeria/7.webp';
+const img9 = '/images/galeria/9.webp';
+const img10 = '/images/galeria/10.jpg';
+const img12 = '/images/galeria/12.webp';
+const img13 = '/images/galeria/13.jpg';
+
+const photos: Photo[] = [
+  { src: img1, height: 'h-[725px]', loading: 'eager' },
+  { src: img3, height: 'h-[604px]' },
+  { src: img4, height: 'h-[725px]' },
+  { src: img6, height: 'h-[725px]' },
+  { src: img7, height: 'h-[322px]' },
+  { src: img9, height: 'h-[322px]', loading: 'eager' },
+  { src: img10, height: 'h-[725px]' },
+  { src: img12, height: 'h-[725px]' },
+  { src: img13, height: 'h-[725px]' },
+];
+
+const col1 = photos.slice(0, 5);
+const col2 = photos.slice(5);
+---
+
+<Layout
+  title="Galería | DJ LABØ"
+  description="Momentos capturados en escenarios de todo el mundo. Desde sesiones íntimas en clubes hasta multitudes masivas en festivales."
+>
+  <section class="relative overflow-hidden px-4 py-24 text-center">
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-96 bg-linear-to-b from-primary/20 to-black"
+    >
+    </div>
+    <div class="relative z-10 container mx-auto">
+      <h1
+        class="mb-6 font-blimone text-7xl tracking-tighter text-white uppercase md:text-9xl"
+      >
+        Galería
+      </h1>
+      <p class="mx-auto max-w-2xl font-display text-xl text-gray-400">
+        Momentos capturados en escenarios de todo el mundo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Photo Grid -->
+  <section class="px-4 py-12">
+    <div class="container mx-auto max-w-7xl">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <!-- Column 1 -->
+        <div class="flex flex-col gap-4">
+          {
+            col1.map(photo => (
+              <button
+                class={`relative w-full ${photo.height} group inline-block cursor-pointer overflow-hidden rounded-xl border-none p-0 focus:outline-none`}
+                onclick={`window.openLightbox('${photo.src}')`}
+              >
+                <Image
+                  src={photo.src}
+                  alt="DJ LABØ en acción"
+                  height={500}
+                  width={500}
+                  loading={photo.loading || 'lazy'}
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span class="font-blimone text-xl tracking-widest text-white uppercase">
+                    Ver pantalla completa
+                  </span>
+                </div>
+              </button>
+            ))
+          }
+        </div>
+        <!-- Column 2 -->
+        <div class="flex flex-col gap-4">
+          {
+            col2.map(photo => (
+              <button
+                class={`relative w-full ${photo.height} group inline-block cursor-pointer overflow-hidden rounded-xl border-none p-0 focus:outline-none`}
+                onclick={`window.openLightbox('${photo.src}')`}
+              >
+                <Image
+                  src={photo.src}
+                  alt="DJ LABØ en acción"
+                  height={500}
+                  width={500}
+                  loading={photo.loading || 'lazy'}
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span class="font-blimone text-xl tracking-widest text-white uppercase">
+                    Ver pantalla completa
+                  </span>
+                </div>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-100 hidden items-center justify-center bg-black/95 p-4 backdrop-blur-md transition-opacity duration-300 md:p-8"
+    onclick="this.classList.add('hidden')"
+  >
+    <button
+      class="absolute top-6 right-6 z-110 text-white transition-colors hover:text-primary"
+      onclick="document.getElementById('lightbox').classList.add('hidden')"
+    >
+      <Cross class="size-10" />
+    </button>
+    <img
+      id="lightbox-img"
+      src=""
+      alt="DJ LABØ en acción"
+      class="max-h-full max-w-full scale-95 rounded-lg object-contain shadow-2xl transition-transform duration-300"
+      onclick="event.stopPropagation()"
+    />
+  </div>
+
+  <script is:inline>
+    // Lista de fotos para navegación
+    const galleryPhotos = [
+      '/images/galeria/1.jpg',
+      '/images/galeria/2.jpg',
+      '/images/galeria/3.webp',
+      '/images/galeria/4.webp',
+      '/images/galeria/5.jpg',
+      '/images/galeria/6.jpg',
+      '/images/galeria/7.webp',
+      '/images/galeria/8.jpg',
+      '/images/galeria/9.jpg',
+      '/images/galeria/10.jpg',
+      '/images/galeria/11.jpg',
+      '/images/galeria/12.webp',
+      '/images/galeria/13.jpg',
+      '/images/galeria/14.jpg',
+      '/images/galeria/15.jpg',
+    ];
+
+    let currentPhotoIndex = null;
+
+    window.openLightbox = src => {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      currentPhotoIndex = galleryPhotos.indexOf(src);
+      if (currentPhotoIndex === -1) currentPhotoIndex = 0;
+      img.src = galleryPhotos[currentPhotoIndex];
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+
+      // Animate scale
+      setTimeout(() => {
+        img.classList.remove('scale-95');
+        img.classList.add('scale-100');
+      }, 10);
+    };
+
+    // Cerrar lightbox con Escape
+    document.addEventListener('keydown', e => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox && !lightbox.classList.contains('hidden')) {
+        if (e.key === 'Escape') {
+          lightbox.classList.add('hidden');
+        }
+      }
+    });
+  </script>
+</Layout>

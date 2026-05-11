@@ -1,0 +1,17 @@
+---
+import WhatsappIcon from '@/assets/whatsapp.svg';
+import { SITE_CONFIG } from '@/config/site';
+---
+
+<div
+  class="fixed right-10 bottom-10 rounded-full bg-green-600 p-3 text-white shadow-lg transition-colors hover:bg-green-700"
+>
+  <a
+    href={SITE_CONFIG.social.whatsapp}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chatear con DJ Labo en WhatsApp"
+  >
+    <WhatsappIcon />
+  </a>
+</div>
